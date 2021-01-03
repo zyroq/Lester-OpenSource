@@ -27,4 +27,10 @@ Lester utilise une base de donnée en cloud, nommée MongoDB. C'est un gestionna
 
 Il est possible d'utiliser [MongoDB Atlas](https://cloud.mongodb.com/) (Cloud) ou [MongoDB Community](https://docs.mongodb.com/manual/administration/install-community/)
 
+Nous ne pouvons pas réellement vous recommandez l'un ou l'autre. **MongoDB Atlas** ne nécessite pas d'installation manuel, car c'est une solution cloud. MongoDB Atlas propose un Cluster gratuit de 512mb (qui sera très largement suffisant).
+**MongoDB Community** fonctionne en **localhost**. Il faudra alors procéder à une installation manuelle sur votre VPS, afin de le configurer. Mais la capacité de stockage est égale à celle de votre VPS. 
+
+Plusieurs tutoriels sont disponibles sur **YouTube**, ou **Internet** pour apprendre à créer un cluster sur le cloud ou en localhost.
+
+1.
 

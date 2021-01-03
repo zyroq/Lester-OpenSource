@@ -20,10 +20,6 @@ const joinLeaveSettings = require("./models/join-leave-data")
 const blacklisted = require("./models/blacklist")
 
 
-
-const Dashboard = require("./dashboard/dashboard");
-
-
 const DBL = require("dblapi.js");
 const dbl = new DBL(botconfig.tokentopgg, bot);
  
@@ -36,49 +32,18 @@ mongoose.connect(config.mongodbUrl, {
 bot.config = config;
 
 bot.on("ready", async () => {
-  
-
-  if(bot.shard.ids == 0) {
-    Dashboard(bot)
-  };
  
-  dbl.on('error', e => {
-    console.log(`Oops! ${e}`);
-   })
-
-  bot.shard.broadcastEval(`
+  await bot.shard.broadcastEval(`
     (async => { 
-      console.log(\`Shard \${this.shard.ids} ready\`)
+      console.log(\`Instance \${this.shard.ids} lancee.\`)
     })();
 `);
 
-bot.shard.broadcastEval(`
-(async => { 
-  console.log(\`Shard \${this.shard.ids} ready\`)
-})();
-`);
 
-    console.log(`${bot.user.username} is online`);
-    bot.user.setActivity(`/help | lester-bot.fr | Shard: ${bot.shard.ids}`, {type: "WATCHING"});
+  console.log(`${bot.user.username} a ete lance parfaitement !`);
+  bot.user.setActivity(`powered by Tseacen`, {type: "WATCHING"});
 
-
-    setInterval(() => {
-  bot.shard.fetchClientValues('guilds.cache.size')
-	.then(results => {
-    console.log(`${results.reduce((prev, guildCount) => prev + guildCount, 0)} total guilds`);
-
-      let serverCount = results.reduce((prev, guildCount) => prev + guildCount, 0);
-      dbl.postStats( serverCount, bot.shard.ids, bot.shard.count);
-      
-
-
-})
-    .catch(console.error);
-  }, 1800000);
-  
 });
-
-
 
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
@@ -90,7 +55,7 @@ fs.readdir("./commands/", (err, files) => {
     //console.log(files)
     let jsfile = files.filter(f => f.split(".").pop() === "js") 
     if(jsfile.length <= 0) {
-         return console.log("[LOGS] Couldn't Find Commands!");
+         return console.log("[LOGS] Aucune commande existante !");
     }
 
     jsfile.forEach((f, i) => {
@@ -174,10 +139,8 @@ bot.on("message", async (message) => {
 
     let prefix = storedSettings.prefix
   
-    // If the message does not start with the prefix stored in database, we ignore the message.
     if (message.content.indexOf(prefix) !== 0) return;
   
-    // We remove the prefix from the message and process the arguments.
     let messageArray = message.content.split(" ")
     let cmd = messageArray[0];
     let args = messageArray.slice(1);
@@ -260,8 +223,6 @@ bot.on("message", async message => {
               
           } else return;
           
-          //sChannel.send(reportEmbed)
-
 } catch(err) {
   console.log(err)
 const errEmbed = new Discord.MessageEmbed()
@@ -355,99 +316,6 @@ message.channel.send(errEmbed);
 
 
 
-//blacklist message
-
-bot.on("message", async message => {
-  if(message.channel.type === "dm" || message.author.bot) return;
-  if(message.guild.id === "570192130601910272") return;
- 
-
-  var user = await blacklisted.findOne({ id: message.author.id });
-  if(!user) return;
-
-  try {
-    if(message.guild.ownerID === message.author.id) {
-    message.guild.leave();
-    return;
-
-    } else {
-
-        let embedLogs = new Discord.MessageEmbed()
-        .setColor(`RED`)
-        .setAuthor(`[BLACKLIST] Utilisateur banni`, `${message.author.displayAvatarURL()}`)
-        .setDescription(`**${message.author.tag}** (${message.author.id}) a été banni du serveur automatiquement car il se trouve dans la blacklist de Lester.`)
-        .addField('Raison :', `${user.reason}`)
-        .setTimestamp()
-
-
-              let logs = await logsSettings.findOne({ gid: message.guild.id })
-              if(logs) {
-                  logs = message.guild.channels.cache.find(x => x.id === logs.channel )
-                  if(logs) {
-                    await logs.send(embedLogs)
-                  } else {
-                    await message.channel.send(embedLogs)
-                  }
-                  
-              } else {
-                await message.channel.send(embedLogs)
-              }
-
-              const member = message.guild.members.resolve(message.author);
-
-
-        await member.ban({ reason: '[BLACKLIST] Cet utilisateur a été banni du serveur automatiquement car il se trouve dans la blacklist de Lester.' })
-      };
-
-} catch(err) {
-};
-});
-
-
-bot.on('guildMemberAdd', async member => {
-  let messageArray = message.content.split(" ")
-  let argsresult = messageArray.slice(0).join(" ");
-
-  if(member.guild.id === "570192130601910272") return;
-
-
-
-  var user = await blacklisted.findOne({ id: member.user.id });
-  if(!user) return;
-
-  try {
-    let embedLogs = new Discord.MessageEmbed()
-    .setColor(`RED`)
-    .setAuthor(`[BLACKLIST] Utilisateur banni`)
-    .setDescription(`**${member.user.tag}** (${member.user.id}) a été banni du serveur automatiquement car il se trouve dans la blacklist de Lester.`)
-    .addField('Raison :', `${user.reason}`)
-    .setTimestamp()
-
-
-          let logs = await logsSettings.findOne({ gid: member.guild.id })
-          if(logs) {
-              logs = bot.channels.get(x => x.id === logs.channel )
-              if(logs) {
-                await logs.send(embedLogs)
-              } 
-          }
-          const user = member.guild.members.resolve(member);
-
-    await user.ban({ reason: '[BLACKLIST] Cet utilisateur a été banni du serveur automatiquement car il se trouve dans la blacklist de Lester.' })
-          
-} catch(err) {
-};
-});
-
-
-bot.on("error", console.error);
-bot.on("warn", console.warn);
-
-
-
-
-
-
 
 
 
@@ -485,7 +353,6 @@ function checkVar(text, user) {
 async function checkDb(id) {
   var storedSettings = await GuildSettings.findOne({ gid: id });
   if (!storedSettings) {
-    // If there are no settings stored for this guild, we create them and try to retrive them again.
     const newSettings = new GuildSettings({
       gid: id
     });
@@ -495,7 +362,6 @@ async function checkDb(id) {
 //twitter settings
 var tSettings = await twitterSettings.findOne({ gid: id });
 if (!tSettings) {
-// If there are no settings stored for this guild, we create them and try to retrive them again.
 let newSettings = new twitterSettings({
   gid: id
 });
@@ -505,7 +371,6 @@ await newSettings.save().catch(()=>{});
 //darknet Settings
 var dSettings = await darknetSettings.findOne({ gid: id });
 if (!dSettings) {
-// If there are no settings stored for this guild, we create them and try to retrive them again.
 let newSettings = new darknetSettings({
   gid: id
 });
@@ -514,7 +379,6 @@ await newSettings.save().catch(()=>{});
 
 var eSettings = await economySettings.findOne({ gid: id });
 if (!eSettings) {
-// If there are no settings stored for this guild, we create them and try to retrive them again.
 let newSettings = new economySettings({
   gid: id
 });
@@ -525,7 +389,6 @@ await newSettings.save().catch(()=>{});
   //logs
   var logs = await logsSettings.findOne({ gid: id });
   if (!logs) {
-    // If there are no settings stored for this guild, we create them and try to retrive them again.
     let newSettings = new logsSettings({
       gid: id
     });
@@ -534,7 +397,6 @@ await newSettings.save().catch(()=>{});
 
   var robberySettings = await robbery.findOne({ gid: id });
   if (!robberySettings) {
-    // If there are no settings stored for this guild, we create them and try to retrive them again.
     let newSettings = new robbery({
       gid: id
     });
@@ -544,7 +406,6 @@ await newSettings.save().catch(()=>{});
   
   var lspd = await lspdSettings.findOne({ gid: id });
   if (!lspd) {
-    // If there are no settings stored for this guild, we create them and try to retrive them again.
     let newSettings = new lspdSettings({
       gid: id
     });
@@ -553,7 +414,6 @@ await newSettings.save().catch(()=>{});
 
   var ems = await emsSettings.findOne({ gid: id });
   if (!ems) {
-    // If there are no settings stored for this guild, we create them and try to retrive them again.
     let newSettings = new emsSettings({
       gid: id
     });
@@ -562,7 +422,6 @@ await newSettings.save().catch(()=>{});
 
   var withening = await witheningSettings.findOne({ gid: id });
   if (!withening) {
-    // If there are no settings stored for this guild, we create them and try to retrive them again.
     let newSettings = new witheningSettings({
       gid: id
     });
@@ -570,8 +429,4 @@ await newSettings.save().catch(()=>{});
   }
 };
 
-
-
- 
-
-bot.login(botconfig.token);
+bot.login(config.token);

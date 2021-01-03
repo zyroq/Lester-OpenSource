@@ -11,6 +11,7 @@ La documentation **complète** de l'Open Source est en cours de rédaction.
 3. Télécharger Lester :
     * En **.zip** et/ou **tar.gz** : [Voir](https://github.com/Tseacen/Lester-OpenSource/releases)
     * Avec [Git](https://git-scm.com/download/win) : `$ git clone https://github.com/Tseacen/Lester-OpenSource.git`
+4. Configurer le bot (Voir ci-dessous).
     
 ## Configuration
 1. Renommer le fichier `config.example.js` en `config.js`
@@ -20,5 +21,7 @@ La documentation **complète** de l'Open Source est en cours de rédaction.
     * **mongodbUrl** : Le lien de d'accès à votre base de donnée (Voir *Configuration de la Base de donnée*).
     
 **⚠ Avertissement :** Ne pas remplir l'une des valeurs ci-dessus, où les retirer du fichier empêchera le bot de fonctionner correctement. Soyez sûr de ce que vous faîtes avant d'apporter ces changements.
+
+##
 
 

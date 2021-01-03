@@ -10,4 +10,4 @@ La documentation **complète** de l'Open Source est en cours de rédaction.
 2 - Installer [Node.js (LTS)](https://nodejs.org/fr/download/)
 3 - Télécharger Lester :
   * Soit en .zip : (bientôt)
-  * Soit avec [Git](https://git-scm.com/download/win) : `git clone `
+  * Soit avec [Git](https://git-scm.com/download/win) : `$ git clone https://github.com/Tseacen/Lester-OpenSource.git`

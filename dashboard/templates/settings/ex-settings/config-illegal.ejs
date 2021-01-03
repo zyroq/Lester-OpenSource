@@ -1,0 +1,88 @@
+<section class="ligne5">
+    <div class="container2">
+        <h1 id="titrepanel">
+            <span><i class="fas fa-cannabis"></i></span>
+            <span class="premelem">ILLEGAL</span>
+            </h1>
+          <div class="quote-container">
+          <a href="#" class="quote-button5">CONFIGURER</a>
+          <div class="elements-panel5">
+
+            <h1><strong>Configuration Braquage</strong></h1>
+            <p>Temps (minutes)</p>
+            <input name="bank_time" id="counter-input" value="<%= robConfig.bank_time %>" type="text" placeholder="Temps" class="inputpre" maxlength="3">
+            
+            
+        <% if(settings.premium === "yes") { %>
+            <div class="containlogo">
+                <img src="../public/img/premium.png" class="premlogoactive">
+            <p class="premelem">Montant</p>
+            </div>
+            <input name="bank_amount" id="counter-input" value="<%= robConfig.bank_amount %>" type="text" placeholder="Montant gagné à la fin d'un braquage" class="inputpre" maxlength="10">
+            
+            <% } else { %>
+                <div class="containlogo">
+                    <img src="../public/img/nonprem.png" class="premlogoactive">
+                <p class="premelem">Montant</p>
+                </div>
+                <input name="bank_amount" id="counter-input" value="<%= robConfig.bank_amount %>" type="text" placeholder="Montant gagné à la fin d'un braquage" class="inputpre" maxlength="10" disabled>
+                
+            <% } %>
+
+
+
+            <h1><strong>Configuration Supérette</strong></h1>
+            <p>Temps (minutes)</p>
+            <input name="superette_time" id="counter-input" value="<%= robConfig.superette_time %>" type="text" placeholder="Temps" class="inputpre" maxlength="3">
+            
+            
+        <% if(settings.premium === "yes") { %>
+            <div class="containlogo">
+                <img src="../public/img/premium.png" class="premlogoactive">
+            <p class="premelem">Montant</p>
+            </div>
+            <input name="superette_amount" id="counter-input" value="<%= robConfig.superette_amount %>" type="text" placeholder="Montant gagné à la fin d'un braquage" class="inputpre" maxlength="10">
+            
+            <% } else { %>
+                <div class="containlogo">
+                    <img src="../public/img/nonprem.png" class="premlogoactive">
+                <p class="premelem">Montant</p>
+                </div>
+                <input name="superette_amount" id="counter-input" value="<%= robConfig.superette_amount %>" type="text" placeholder="Montant gagné à la fin d'un braquage" class="inputpre" maxlength="10" disabled>
+                
+            <% } %>
+
+
+            
+            <h1><strong>Configuration Blanchissement</strong></h1>
+            
+        <% if(settings.premium === "yes") { %>
+            <div class="containlogo">
+                <img src="../public/img/premium.png" class="premlogoactive">
+            <p class="premelem">Temps (Minutes</p>
+            </div>
+            <input name="withening_time" id="counter-input" value="<%= withening.time %>" type="text" class="inputpre">
+            <div class="containlogo">
+                <img src="../public/img/premium.png" class="premlogoactive">
+            <p class="premelem">Montant Maximum</p>
+            </div>
+            <input name="withening_amount" id="counter-input" value="<%= withening.amount %>" type="text" placeholder="Montant gagné à la fin du blanchissement" class="inputpre">
+            
+            <% } else { %>
+                <div class="containlogo">
+                    <img src="../public/img/nonprem.png" class="premlogoactive">
+                <p class="premelem">Temps (Minutes</p>
+                </div>
+                <input name="withening_time" id="counter-input" value="<%= withening.time %>" type="text" class="inputpre" disabled>
+                <div class="containlogo">
+                    <img src="../public/img/nonprem.png" class="premlogoactive">
+                <p class="premelem">Montant Maximum</p>
+                </div>
+                <input name="withening_amount" id="counter-input" value="<%= withening.amount %>" type="text" placeholder="Montant gagné à la fin du blanchissement" class="inputpre" maxlength="10" disabled>
+                
+            <% } %>
+
+            
+          </div>
+      </div>
+    </div>

@@ -1,0 +1,62 @@
+<%- include("partials/header", { bot, user, path, title: "Accueil" }) %>
+
+<section id="banner">
+    <div>
+        <img src="../public/img/Lesterlogo.png" class="img-hero">
+        <h2 class="title-hero">Le premier bot Discord RôlePlay français conçu pour Grand Theft Auto V</h2>
+    </div>
+    <div class="inline-hero">
+        <a href="https://discord.com/oauth2/authorize?client_id=604672517130420245&scope=bot&permissions=8" class="button-hero special">              
+            <span class="icon postext"><i class="fas fa-robot"></i></span>
+            <span class="text-pos-icon postext">Ajouter Lester</span></a>
+        <a href="/dashboard" class="button-hero special">              
+            <span class="icon postext"><i class="fas fa-cogs"></i></span>
+            <span class="text-pos-icon postext">Configuration</span></a>
+        </div>
+</section>
+
+
+<section id="banner-two">
+    <div class="hero-two">
+        <div class="banner-div-left">
+        <h1 class="hero-text">Annoncez vos sessions plus facilement avec Lester</h1>
+        </div>
+        <img src="../public/img/banner1.PNG" class="img-herobanner1">
+
+        <div class="hr-hero"></div>
+
+        <div class="banner-div-right">
+        <h1 class="hero-text">Mettez en place un système de chat anonyme sur votre serveur</h1>
+        </div>
+        <img src="../public/img/banner2.PNG" class="img-herobanner2">
+
+        <div class="hr-hero"></div>
+
+        <h2 class="hero-texth2">Et profiter de plusieurs de nos autres fonctionnalités !</h1>
+
+    </div>
+</section>
+
+<section id="banner">
+    <div class="top-users">
+        <i class="fas fa-download icon-footer"></i>
+        <h1 class="counter-title"><strong><%= guildCount %></strong></h1>
+        <div class="hr-hero-banner"></div>
+        <h2 class="counter-p">Serveurs</h2>
+    </div>
+    <div class="top-users">
+        <i class="fas fa-server icon-footer"></i>
+        <h1 class="counter-title"><strong><%= bot.shard.count %></strong></h1>
+        <div class="hr-hero-banner"></div>
+        <h2 class="counter-p">Instances</h2>
+    </div>
+    <div class="top-users">
+        <i class="fas fa-users icon-footer"></i>
+        <h1 class="counter-title"><strong><%= totalMembers %></strong></h1>
+        <div class="hr-hero-banner"></div>
+        <h2 class="counter-p">Utilisateurs</h2>
+    </div>
+</section>
+
+
+<%- include("partials/footer") %>

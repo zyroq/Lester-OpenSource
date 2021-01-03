@@ -1,0 +1,43 @@
+<%- include("partials/header", { bot, user, path, staff, admin, support, billing, title: "Panel Staff" }) %>
+
+
+<div class="line1-panel-staff">
+    <div class="information-panel-staff-left">
+        <div class="subtitle-panel-staff">Statistiques :</div>
+        <br>
+        <i class="fas fa-plug"></i> <strong>Instances :</strong> <%= bot.shard.count %> (<a href="/statut">Voir statut</a>)
+        <br>
+        <br>
+        <i class="fas fa-users"></i> <strong>Nombre d'utilisateurs :</strong> <%= totalMembers %>
+        <br>
+        <br>
+        <i class="fas fa-server"></i> <strong>Nombre de serveurs :</strong> <%= guildCount %>
+        <br>
+        <br>
+        <i class="fas fa-gem"></i> <strong>Nombre de serveurs premium :</strong> <%= serverPremiumCount %>
+    </div>
+</div>
+<hr>
+<title class="title">Outils</title>
+
+<div class="line1-panel-staff">
+    <div class="tools-class">
+        <div class="subtitle2-panel-staff">Trouver un serveur :</div>
+        <a href="/panel-staff/serveur"><button class="button-server-list">Ouvrir le menu</button></a>
+    </div>
+    <div class="tools-class2">
+        <div class="subtitle2-panel-staff">Afficher les informations d'un utilisateur :</div>
+        <a href="/panel-staff/membre"><button class="button-server-list">Ouvrir le menu</button></a>
+    </div>
+
+    <% if(isBilling) { %>
+    <div class="tools-class">
+        <div class="subtitle2-panel-staff">Transfert de serveur premium :</div>
+        <a href="/panel-staff/transfert-serveur-premium"><button class="button-server-list">Ouvrir le menu</button></a>
+    </div>
+    <% } %>
+</div>
+<div class="invisible"></div>
+
+
+<%- include("partials/footer") %>

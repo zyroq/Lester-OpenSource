@@ -1,0 +1,62 @@
+.icon-staff {
+    margin-top: 10px;
+    height: 120px;
+    width: auto;
+    border-radius: 50%;
+    border: 3px solid #434e5e;
+    background-color: #3b4452;
+    max-width: 100%;
+}
+
+.card-staff {
+    display: inline-block;
+    height: 300px;
+    width: 230px;
+    background-color: #363535;
+    border-radius: 3px;
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.pseudo-staff {
+    display: inline-block;
+    color: white;
+    font-size: 20px;
+}
+
+.tag-staff {
+    display: inline-block;
+    color: #727272;
+    margin-top: 20px;
+}
+.role-staff {
+    color: #7289da;
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-style: italic;
+}
+
+.flex{
+    display: flex;
+}
+.position {
+    text-align: center;
+}
+
+.hr-bar {
+    background-color: #7289da;
+    width: 300px;
+    height: 5px;
+    border-radius: 5px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+}
+
+.title-staff {
+    color: white;
+    font-size: 20px;
+    margin-top: 15px;
+}

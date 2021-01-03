@@ -1,0 +1,131 @@
+<%- include("../partials/header", { bot, user, path, title: "Configuration - Général" }) %>
+
+<section id="settings-banner">
+    <% if(guild[0].icon) { %>
+        <p class="name-server-settings"><img class="icon-settings" src="<%= `https://cdn.discordapp.com/icons/${guild[0].id}/${guild[0].icon}.png?size=128` %>"><strong><%= guild[0].name %></strong></p>
+    <% } else { %>
+        <p class="name-server-settings"><img src="../public/img/lester0.1.png" class="guild-icon-settings"><strong><%= guild[0].name %></strong></p>
+    <% } %>
+</section>
+<form method="POST">
+<section class="menu-banner">
+    <div class="columns">
+        <div class="column is-2 menu">
+          <ul class="menu-list has-text-centered">
+              <li>
+                <a href="/dashboard/<%= guild[0].id %>">Général</a>
+              </li>
+              <li>
+                <a href="/dashboard/<%= guild[0].id %>/economie">Economie</a>
+            </li>
+            <li>
+              <a href="/dashboard/<%= guild[0].id %>/embed">Embed</a>
+            </li>
+            <li>
+              <a href="/dashboard/<%= guild[0].id %>/illegal">Illégal</a>
+          </li>
+          <li>
+            <a class="is-active" href="/dashboard/<%= guild[0].id %>/services">Services</a>
+          </li>
+          <li>
+            <a href="/dashboard/<%= guild[0].id %>/premium">Premium</a>
+          </li>
+          </ul>
+        </div>
+        
+        <div class="column is-10 settings">
+            <% if(alert) { %>
+          <div class="alert-saving">      
+            <span class="fas fa-check-circle"></span>
+            <span class="msg">Changement effectué avec succès</span>
+        </div>
+        <% } %>
+
+        <div class="parameter">
+            <label class="label title-parameter">
+              LSPD
+            </label>
+            <p class="description-parameter">Configuration du salon L.S.P.D</p>
+            <select name="lspd_channel" class="selectsalon">
+                <% if(lspd.channel) {
+                  if(lspdChannelStatut) { %>
+                  <option value="<%= lspd.channel %>">#<%= lspdChannelStatut %></option>   
+                  <option value="0000">Aucun</option>   
+                  <% } else { %>
+                    <option value="0000">Sélectionner un salon</option>   
+                    <% } %>
+                    
+                  <% } else { %>
+                  <option value="0000">Sélectionner un salon</option>   
+      
+                  <% } %>
+      
+                <% channelsText.forEach(function(channel) {
+                    if(channel.id === lspd.channel) return;
+                   %>
+                  <option value="<%= channel.id %>">#<%= channel.name %></option>   
+                  <% 
+                }) %>            
+                </select> 
+        </div>
+
+
+        
+        <div class="parameter">
+            <label class="label title-parameter">
+              EMS
+            </label>
+            <p class="description-parameter">Configuration du salon E.M.S</p>
+            <select name="ems_channel" class="selectsalon">
+                <% if(ems.channel) {
+                  if(emsChannelStatut) { %>
+                  <option value="<%= ems.channel %>">#<%= emsChannelStatut %></option>   
+                  <option value="0000">Aucun</option>   
+                  <% } else { %>
+                    <option value="0000">Sélectionner un salon</option>   
+                    <% } %>
+                    
+                  <% } else { %>
+                  <option value="0000">Sélectionner un salon</option>   
+      
+                  <% } %>
+      
+                <% channelsText.forEach(function(channel) {
+                    if(channel.id === ems.channel) return;
+                   %>
+                  <option value="<%= channel.id %>">#<%= channel.name %></option>   
+                  <% 
+                }) %>            
+                </select>
+        </div>
+
+
+          
+          <input name="save" class="button" type="submit" value="Sauvegarder">
+        </div>
+      </div>
+</section>
+
+<section class="welcome-banner">    
+    <h1 class="info-title">Informations</h1>
+
+    <div class="server-about">
+        <i class="fas fa-users"></i> <strong>Membre(s) :</strong> <%= guild[0].memberCount %>
+        <br>
+        <%
+        var myDate = new Date(guild[0].createdTimestamp);
+        let dateCreate = myDate.getHours()+ ':'+('0' + (myDate.getMinutes())).slice(-2) + ' le ' + ('0' + myDate.getDate()).slice(-2) + '/' + ('0' + (myDate.getMonth()+1)).slice(-2)+ '/' + myDate.getFullYear()
+        %>
+        <i class="fas fa-clock"></i> <strong>Date de création :</strong> <%= dateCreate %> (Il y a <%= createdTimestamp %>)
+        <br>
+        <i class="fas fa-user-tag"></i> <strong>Rôle(s) :</strong> <%= guild[0].roles.length %>
+        <br>
+        <i class="fas fa-hashtag"></i> <strong>Salon(s) :</strong> <%= guild[0].channels.length %>
+
+    </div>
+</section>
+</form>
+
+
+<%- include("../partials/footer") %>
+

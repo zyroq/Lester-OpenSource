@@ -1,7 +1,4 @@
-Initialiser le dashboard :
+# Lester
+Lester un bot RôlePlay Open Source développé dans l'objectif d'améliorer le RôlePlay pour console via [Discord](https://discord.com/).
 
-Ouvrir un terminer dans un fichier (par exemple ouvrir un terminal dans VSC) 
-1. Installer les fichiers : https://github.com/Tseacen/Lester-Dashboard.git
-2. Installer les packages : npm install
-3. Lancer le dashboard : node index.js
-4. Se connecter en localhost sur chrome : http://localhost:8080
+Merci à chaque utilisateur qui soutiendra ce travail en ajoutant une étoile, et en contribuant au projet en nous signalant les différents bugs trouvés en rejoigant [notre support](https://discord.gg/ME3y3Bx).

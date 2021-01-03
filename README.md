@@ -32,5 +32,17 @@ Nous ne pouvons pas réellement vous recommandez l'un ou l'autre. **MongoDB Atla
 
 Plusieurs tutoriels sont disponibles sur **YouTube**, ou **Internet** pour apprendre à créer un cluster sur le cloud ou en localhost.
 
-1.
+1. Créer un accès privé pour le bot (Database Access)
+2. Configurer dans le fichier `config.js` la valeur suivante :
+   `"mongodbUrl": "mongodb+srv://<NomDeL'acces>:<MotDePasse>@cluster0.giwyh.mongodb.net/<NomDeLaBaseDeDonnee>?retryWrites=true&w=majority"`
+Modifier la partie *NomDeL'acces*, *MotDePasse* et *NomDeLaBaseDeDonnee* par vos informations.
 
+**Note : N'oubliez pas d'enlever les chevrons < et > !**
+
+## Lancer le bot
+2 Possibilités :
+
+* Double-clique sur le fichier `start.bat`. L'installation et la mise à jour des dépendances se fera automatiquement.
+* Ouvrez un terminal dans le dossier et lancer le fichier `index.js`. Ex: `node index.js`
+
+**⚠ Avertissement :** Pour le moment le lancement manuel ne prend pas en compte l'installation des dépendances automatiquement. Il faudra effectuer dans le terminal la commande suivante : `npm install` avant de lancer pour la **première fois** le bot.

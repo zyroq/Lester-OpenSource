@@ -34,7 +34,8 @@ Plusieurs tutoriels sont disponibles sur **YouTube**, ou **Internet** pour appre
 
 1. Créer un accès privé pour le bot (Database Access)
 2. Configurer dans le fichier `config.js` la valeur suivante :
-   `"mongodbUrl": "mongodb+srv://<NomDeL'acces>:<MotDePasse>@cluster0.giwyh.mongodb.net/<NomDeLaBaseDeDonnee>?retryWrites=true&w=majority"`
+
+   Exemple : `"mongodbUrl": "mongodb+srv://<NomDeL'acces>:<MotDePasse>@cluster0.giwyh.mongodb.net/<NomDeLaBaseDeDonnee>?retryWrites=true&w=majority"`
 Modifier la partie *NomDeL'acces*, *MotDePasse* et *NomDeLaBaseDeDonnee* par vos informations.
 
 **Note : N'oubliez pas d'enlever les chevrons < et > !**

@@ -6,9 +6,8 @@ const accountData = require("../models/accounts");
 
 module.exports.run = async (bot, message, args) => {
     try {
-
+    //cette commande n'est pas complète et sera disponible dans une prochaine version
     
-
     var storedSettings = await GuildSettings.findOne({ gid: message.guild.id });
     if(storedSettings.premium === "no") return;
 

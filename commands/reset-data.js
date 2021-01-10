@@ -27,24 +27,15 @@ module.exports.run = async (bot, message, args) => {
 
                     var settings = await GuildSettings.findOne({ gid: message.guild.id })
 
-                    let prem = false;
-                    if(settings.premium === "yes") prem = true;
-
                     var guildsettings = await GuildSettings.findOneAndDelete({ gid: message.guild.id })
                     var twitter = await twitterSettings.findOneAndDelete({ gid: message.guild.id })
                     var darknet = await darknetSettings.findOneAndDelete({ gid: message.guild.id })
                     var economy = await economySettings.findOneAndDelete({ gid: message.guild.id })
 
-                    if (prem) {
-                        // If there are no settings stored for this guild, we create them and try to retrive them again.
-                        const newSettings = new GuildSettings({
-                          gid: message.guild.id,
-                          premium: "yes"
-                        });
-                        await newSettings.save().catch(()=>{});
-                      }
 
-                      await msg.edit("Réinitialisation terminée.");
+
+                    await msg.edit("Réinitialisation terminée.");
+                    
                     };
 
                     resetData();

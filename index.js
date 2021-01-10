@@ -9,5 +9,5 @@ const manager = new ShardingManager('./bot.js', {
  });
 
 manager.spawn(this.totalShards, 10000);
-
+//test
 manager.on('shardCreate', shard => console.log(`Chargement de l'instance : ${shard.id}`));

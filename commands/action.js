@@ -1,5 +1,5 @@
 const Discord = require("discord.js")
-//test
+
 module.exports.run = async (bot, message, args) => {
     try {
     

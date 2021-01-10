@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-const botconfig = require("./botconfig.json");
 const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
 const mongoose = require("mongoose");
@@ -18,17 +17,16 @@ const userSettings = require("./models/user-cardId")
 const witheningSettings = require("./models/withening-settings")
 const joinLeaveSettings = require("./models/join-leave-data")
 const blacklisted = require("./models/blacklist")
+var getRepoInfo = require('git-repo-info');
+var hostedGitInfo = require("hosted-git-info")
+var info = hostedGitInfo.fromUrl("git@github.com:npm/hosted-git-info.git")
 
-
-const DBL = require("dblapi.js");
-const dbl = new DBL(botconfig.tokentopgg, bot);
- 
-
+console.log(info)
 // We instiate the client and connect to database.
-mongoose.connect(config.mongodbUrl, {
+/*mongoose.connect(config.mongodbUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true
-});
+});*/
 bot.config = config;
 
 bot.on("ready", async () => {

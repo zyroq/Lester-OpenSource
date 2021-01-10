@@ -1,8 +1,9 @@
 const Discord = require("discord.js");
 const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
-const mongoose = require("mongoose");
 const config = require("./config");
+
+//models db
 const GuildSettings = require("./models/settings");
 const twitterSettings = require("./models/twitter");
 const darknetSettings = require("./models/darknet");
@@ -15,6 +16,8 @@ const emsSettings = require("./models/ems");
 const userSettings = require("./models/user-cardId")
 const witheningSettings = require("./models/withening-settings")
 const joinLeaveSettings = require("./models/join-leave-data")
+
+
 bot.on("ready", async () => {
  
   await bot.shard.broadcastEval(`

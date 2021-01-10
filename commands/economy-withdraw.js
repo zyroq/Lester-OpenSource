@@ -1,6 +1,5 @@
 const Discord = require("discord.js")
 const GuildSettings = require("../models/settings");
-const economySettings = require("../models/economy");
 const userBank = require("../models/user-bank");
 
 module.exports.run = async (bot, message, args) => {

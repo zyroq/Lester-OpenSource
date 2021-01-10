@@ -8,7 +8,6 @@ const massAddTime = new Set();
 module.exports.run = async (bot, message, args) => {
     try {
 
-        return message.channel.send("Cette commande est temporairement désactivée.")
         if (massAddTime.has(message.guild.id)) {
             message.channel.send("Veuillez patienter 1 minute avant d'utiliser cette commande.").then(msg => msg.delete({ timeout: 3000 }));;
         } else {

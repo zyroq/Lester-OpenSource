@@ -1,4 +1,5 @@
 const Discord = require("discord.js")
+
 const userSettings = require("../models/user-cardId")
 const guildSettings = require("../models/settings")
 
@@ -78,13 +79,13 @@ module.exports.run = async (bot, message, args) => {
                     }
 
             }
-/*
-    p_mot:"Non",
-    p_car:"Non",
-    p_boat:"Non",
-    p_hel:"Non",
-    p_plane:"Non"
-*/
+            /*
+                p_mot:"Non",
+                p_car:"Non",
+                p_boat:"Non",
+                p_hel:"Non",
+                p_plane:"Non"
+            */
 
             else if (args[1] === "permis-moto") {
 

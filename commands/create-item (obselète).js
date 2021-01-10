@@ -1,9 +1,12 @@
 const Discord = require("discord.js")
+
 const GuildSettings = require("../models/settings");
 const itemSettings = require("../models/item");
 const userItemSettings = require("../models/user-item");
 
 module.exports.run = async (bot, message, args) => {
+    
+    //cette commande n'est pas complète et sera disponible dans une prochaine version
 
     var settings = await GuildSettings.findOne({ gid: message.guild.id })
     let modrole = settings.role;

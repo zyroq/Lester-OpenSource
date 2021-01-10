@@ -22,7 +22,6 @@ module.exports.run = async (bot, message, args) => {
                 return;
             }
 
-            
 
     } catch (err) {
         const errEmbed = new Discord.MessageEmbed()

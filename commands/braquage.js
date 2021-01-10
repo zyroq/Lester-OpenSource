@@ -2,6 +2,7 @@ const Discord = require("discord.js")
 
 const talkedRecently = new Set();
 const ms = require('ms');
+
 const robberySettings = require("../models/robbery");
 const guildSettings = require("../models/settings");
 const userBankBalance = require("../models/user-bank");

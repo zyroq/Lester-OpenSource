@@ -4,7 +4,6 @@ const bot = new Discord.Client({disableEveryone: true});
 const mongoose = require("mongoose");
 const config = require("./config");
 const GuildSettings = require("./models/settings");
-const PremiumKey = require("./models/premium-key");
 const twitterSettings = require("./models/twitter");
 const darknetSettings = require("./models/darknet");
 const economySettings = require("./models/economy");
@@ -16,19 +15,6 @@ const emsSettings = require("./models/ems");
 const userSettings = require("./models/user-cardId")
 const witheningSettings = require("./models/withening-settings")
 const joinLeaveSettings = require("./models/join-leave-data")
-const blacklisted = require("./models/blacklist")
-var getRepoInfo = require('git-repo-info');
-var hostedGitInfo = require("hosted-git-info")
-var info = hostedGitInfo.fromUrl("git@github.com:npm/hosted-git-info.git")
-
-console.log(info)
-// We instiate the client and connect to database.
-/*mongoose.connect(config.mongodbUrl, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});*/
-bot.config = config;
-
 bot.on("ready", async () => {
  
   await bot.shard.broadcastEval(`

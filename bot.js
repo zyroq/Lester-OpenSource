@@ -28,7 +28,7 @@ bot.on("ready", async () => {
 
 
   console.log(`${bot.user.username} a ete lance parfaitement !`);
-  bot.user.setActivity(`powered by Tseacen`, {type: "WATCHING"});
+  bot.user.setActivity(`${config.botActivityMsg}`, {type: `${config.botActivity}`});
 
 });
 

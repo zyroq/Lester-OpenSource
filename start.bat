@@ -21,7 +21,7 @@ color E
 echo Lancement du bot..
 echo.
 
-call nodemon index.js
+call node index.js
 
 if NOT ["%errorlevel%"]==["0"] (
   pause

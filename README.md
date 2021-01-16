@@ -50,3 +50,4 @@ Modifier la partie *NomDeL'acces*, *MotDePasse* et *NomDeLaBaseDeDonnee* par vos
 
 
 ## F.A.Q
+* **[✨ Mettre à jour le bot](readme/MAJ.md)**

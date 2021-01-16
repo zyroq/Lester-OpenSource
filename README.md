@@ -8,7 +8,7 @@ La documentation **complète** de l'Open Source est en cours de rédaction.
 ## Pré-requis
 1. Créer une application (bot) sur [Discord Developer Portal](https://discordapp.com/developers/)
 2. Installer [Node.js (LTS)](https://nodejs.org/fr/download/)
-3. Télécharger Lester :
+3. Télécharger Lester (2 options):
     * En **.zip** et/ou **tar.gz** : [Voir](https://github.com/Tseacen/Lester-OpenSource/releases)
     * Avec [Git](https://git-scm.com/download/win) : `$ git clone https://github.com/Tseacen/Lester-OpenSource.git`
 4. Configurer le bot (Voir ci-dessous).

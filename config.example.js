@@ -1,6 +1,10 @@
 module.exports = {
   "token": "", // https://discordapp.com/developers/applications/ID/bot
-  "mongodbUrl": "", // MongoDB URL
+
+  //MongoDB
+  "db_username": "", // MongoDB DataBase nom d'utilisateur
+  "db_password": "", // MongoDB DataBase mot de passe
+
   "botActivityMsg": "Créé par Tseacen", // Modifie l'activité du bot
 
 

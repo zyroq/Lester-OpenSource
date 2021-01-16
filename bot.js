@@ -21,11 +21,25 @@ const joinLeaveSettings = require("./models/join-leave-data")
 
 const colors = require('colors');
 
+async function mongoConnect() {
+    if(config.db_username && config.db_password) {
+      const mongodbUrl = `mongodb+srv://${config.db_username}:${config.db_password}@cluster0.giwyh.mongodb.net/test?retryWrites=true&w=majority`;
+      await console.log("[Lester] Connexion à la base de donnée en cours..");
+      await mongoose.connect(mongodbUrl, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+      });
+      await console.log("[Lester] Connexion à la base de donnée établie !".green)
+    } else if(config.mongodbUrl) {
+      console.log("[Lester] Un problème de compatibilité des ressources a été trouvé. Votre version du fichier \"config.js\" est trop ancienne, et doit être mis à jour vers la version 0.0.11 ou une version plus récente.".yellow);
+    } else {
+      console.log("[Lester] Il manque un nom d'utilisateur, ou un mot de passe pour la base de donnée MongoDB. Veuillez réessayer !".red);
+      return;
+    }
+}
 
-mongoose.connect(config.mongodbUrl, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+mongoConnect()
+
 
 
 bot.on("ready", async () => {
@@ -35,6 +49,7 @@ bot.on("ready", async () => {
       console.log(\`Instance \${this.shard.ids} lancee.\`)
     })();
 `);
+
 
 
   console.log(`${bot.user.username} a ete lance parfaitement !`.green);
@@ -426,4 +441,9 @@ await newSettings.save().catch(()=>{});
   }
 };
 
+if(config.token) {
 bot.login(config.token);
+} else {
+  console.log("[Lester] Veuillez entrer un token dans le fichier \"config.js\". Rendez-vous sur la page GitHub pour suivre les étapes de la documentation afin de faire fonctionner le bot parfaitement.");
+  return;
+}

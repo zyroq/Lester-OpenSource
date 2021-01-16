@@ -47,3 +47,6 @@ Modifier la partie *NomDeL'acces*, *MotDePasse* et *NomDeLaBaseDeDonnee* par vos
 * Ouvrez un terminal dans le dossier et lancer le fichier `index.js`. Ex: `node index.js`
 
 **⚠ Avertissement :** Pour le moment le lancement manuel ne prend pas en compte l'installation des dépendances automatiquement. Il faudra effectuer dans le terminal la commande suivante : `npm install` avant de lancer pour la **première fois** le bot.
+
+
+## F.A.Q

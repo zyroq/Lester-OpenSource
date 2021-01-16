@@ -4,6 +4,15 @@ const twitterSettings = require("../models/twitter");
 const darknetSettings = require("../models/darknet");
 const economySettings = require("../models/economy");
 
+const userBank = require("../models/user-bank");
+const logsSettings = require("../models/logs");
+const robbery = require("../models/robbery");
+const lspdSettings = require("../models/lspd");
+const emsSettings = require("../models/ems");
+const userSettings = require("../models/user-cardId")
+const witheningSettings = require("../models/withening-settings")
+const joinLeaveSettings = require("../models/join-leave-data")
+
 
 module.exports.run = async (bot, message, args) => {
 
@@ -25,14 +34,13 @@ module.exports.run = async (bot, message, args) => {
                     async function resetData() {
                     let msg = await message.channel.send(`**Réinitialisation en cours..** Cette étape peut prendre quelques minutes.`);
 
-                    var settings = await GuildSettings.findOne({ gid: message.guild.id })
-
-                    var guildsettings = await GuildSettings.findOneAndDelete({ gid: message.guild.id })
-                    var twitter = await twitterSettings.findOneAndDelete({ gid: message.guild.id })
-                    var darknet = await darknetSettings.findOneAndDelete({ gid: message.guild.id })
-                    var economy = await economySettings.findOneAndDelete({ gid: message.guild.id })
-
-
+                    await GuildSettings.findOneAndDelete({ gid: message.guild.id });
+                    await twitterSettings.findOneAndDelete({ gid: message.guild.id });
+                    await darknetSettings.findOneAndDelete({ gid: message.guild.id });
+                    await lspdSettings.findOneAndDelete({ gid: message.guild.id });
+                    await emsSettings.findOneAndDelete({ gid: message.guild.id });
+                    await robbery.findOneAndDelete({ gid: message.guild.id });
+                    await witheningSettings.findOneAndDelete({ gid: message.guild.id });
 
                     await msg.edit("Réinitialisation terminée.");
                     

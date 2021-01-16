@@ -17,6 +17,7 @@ const userSettings = require("./models/user-cardId")
 const witheningSettings = require("./models/withening-settings")
 const joinLeaveSettings = require("./models/join-leave-data")
 
+const colors = require('colors');
 
 bot.on("ready", async () => {
  
@@ -27,7 +28,7 @@ bot.on("ready", async () => {
 `);
 
 
-  console.log(`${bot.user.username} a ete lance parfaitement !`);
+  console.log(`${bot.user.username} a ete lance parfaitement !`.green);
   bot.user.setActivity(`${config.botActivityMsg}`, {type: `${config.botActivity}`});
 
 });

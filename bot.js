@@ -12,12 +12,21 @@ const userBank = require("./models/user-bank");
 const logsSettings = require("./models/logs");
 const robbery = require("./models/robbery");
 const lspdSettings = require("./models/lspd");
+const mongoose = require("mongoose");
+
 const emsSettings = require("./models/ems");
 const userSettings = require("./models/user-cardId")
 const witheningSettings = require("./models/withening-settings")
 const joinLeaveSettings = require("./models/join-leave-data")
 
 const colors = require('colors');
+
+
+mongoose.connect(config.mongodbUrl, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+
 
 bot.on("ready", async () => {
  

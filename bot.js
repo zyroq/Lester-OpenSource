@@ -40,8 +40,6 @@ async function mongoConnect() {
 
 mongoConnect()
 
-
-
 bot.on("ready", async () => {
  
   await bot.shard.broadcastEval(`

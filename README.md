@@ -22,7 +22,7 @@ La documentation **complète** de l'Open Source est en cours de rédaction.
     
 **⚠ Avertissement :** Ne pas remplir l'une des valeurs ci-dessus, où les retirer du fichier empêchera le bot de fonctionner correctement. Soyez sûr de ce que vous faîtes avant d'apporter ces changements.
 
-## Configuration Base de donnée (Doc obselète)
+## Configuration Base de donnée
 Lester utilise MongoDB. C'est un gestionnaire de base de donnée noSQL, orienté objet.
 
 Il est possible d'utiliser [MongoDB Atlas](https://cloud.mongodb.com/) (Cloud) ou [MongoDB Community](https://docs.mongodb.com/manual/administration/install-community/)

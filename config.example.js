@@ -3,7 +3,7 @@ module.exports = {
 
   //MongoDB
   "db_username": "", // MongoDB DataBase nom d'utilisateur
-  "db_password": "", // MongoDB DataBase mot de passe
+  "db_password": "", // MongoDB DataBase mot de passe de la base de donnée (de votre compte personnel)
 
   "botActivityMsg": "Créé par Tseacen", // Modifie l'activité du bot
 
